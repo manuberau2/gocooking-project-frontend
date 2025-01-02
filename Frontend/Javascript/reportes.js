@@ -1,4 +1,4 @@
-const urlReportes = 'https://gocooking-project-backend.onrender.com/reportes';
+const urlReportes = 'https://gocooking-project-backend.onrender.com/reportes/';
 
 function errorFunction(status, response) {
     alert("Error " + status + ":\n" + response.error);

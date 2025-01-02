@@ -1,4 +1,4 @@
-const urlAlimentos = 'https://gocooking-project-backend.onrender.com/alimentos';
+const urlAlimentos = 'https://gocooking-project-backend.onrender.com/alimentos/';
 
 // Eventos del DOM
 document.addEventListener("DOMContentLoaded", function (eventDOM) {

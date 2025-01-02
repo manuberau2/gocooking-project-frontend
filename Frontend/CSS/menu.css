@@ -1,13 +1,15 @@
-
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05); /* Aumenta el tamaño de la tarjeta ligeramente */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 1); /* Añade sombra */
+    transform: scale(1.05);
+    /* Aumenta el tamaño de la tarjeta ligeramente */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+    /* Añade sombra */
 
 }
+
 .bg-image {
     background-image: url('../Resources/fondodepantallamenu.jpg');
 }
@@ -20,5 +22,5 @@
     max-width: 45%;
     border-color: black;
     border-radius: 50%;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }

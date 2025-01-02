@@ -1,4 +1,4 @@
-const urlCompras = 'https://gocooking-project-backend.onrender.com/compras';
+const urlCompras = 'https://gocooking-project-backend.onrender.com/compras/';
 
 // Eventos
 

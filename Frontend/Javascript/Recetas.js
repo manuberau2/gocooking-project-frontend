@@ -1,6 +1,6 @@
 // Url's
-const urlRecetas = "https://gocooking-project-backend.onrender.com/recetas";
-const urlIngredientes = "https://gocooking-project-backend.onrender.com/alimentos";
+const urlRecetas = "https://gocooking-project-backend.onrender.com/recetas/";
+const urlIngredientes = "https://gocooking-project-backend.onrender.com/alimentos/";
 
 
 // Eventos
