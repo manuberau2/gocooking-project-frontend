@@ -171,7 +171,7 @@ async function modificarAlimento(id, alimento) {
 }
 
 async function agregarAlimento(alimento) {
-    const url = `${urlCompras}`;
+    const url = `${urlAlimentos}`;
     try {
         await makeRequest(
             url,                                  // URL de la API

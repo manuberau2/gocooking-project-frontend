@@ -80,7 +80,7 @@ async function makeRequest(
     let responseBody = {};
     try {
       responseBody = await response.json();
-    }catch{}
+    } catch { }
 
     if ("access_token" in responseBody) {
       localStorage.setItem("authToken", responseBody.access_token);
@@ -95,8 +95,7 @@ async function makeRequest(
       successCallback(responseBody);
     } else {
       console.error(
-        `Error en llamada: ${url}: status: ${
-          response.status
+        `Error en llamada: ${url}: status: ${response.status
         } - ${JSON.stringify(responseBody)}`
       );
 
@@ -113,7 +112,7 @@ async function makeRequest(
 }
 
 function isUserLogged() {
-  const isLogged =  localStorage.getItem("authToken") != null;
+  const isLogged = localStorage.getItem("authToken") != null;
   if (!isLogged) {
     window.location = 'login.html?reason=login_required';
   }
