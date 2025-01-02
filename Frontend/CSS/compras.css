@@ -1,0 +1,39 @@
+
+.sidebar {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+.content {
+    margin-left: 220px; 
+}
+.btn-custom-orange {
+    background-color: #FFA500; /* Color naranja */
+    color: white; /* Color del texto */
+    width: 200px; /* Ancho del botón */
+}
+
+.btn-custom-blue {
+    background-color: #007BFF; /* Color azul */
+    color: white; /* Color del texto */
+    width: 200px; /* Ancho igual que los otros botones */
+}
+
+.btn-custom-green {
+    background-color: #28A745; /* Color verde */
+    color: white; /* Color del texto */
+    width: 200px; /* Ancho igual que los otros botones */
+    display: none;
+}
+
+.btn-custom-orange:hover, .btn-custom-blue:hover, .btn-custom-green:hover {
+    opacity: 0.8; /
+}
+.text-center-volver {
+    background-color: #ff4500;
+    color: #ffffff;
+}

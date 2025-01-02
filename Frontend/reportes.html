@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="./CSS/reportes.css">
+</head>
+
+<body>
+    <div class="header-container">
+        <h1>Reportes</h1>
+        <a href="index.html" class="btn btn-custom">Volver al inicio</a>
+    </div>
+
+    <hr>
+
+    <section>
+        <figure>
+            <h2>Cantidad de recetas por tipo de uso:</h2>
+            <h3>Gráfico de barras:</h3>
+            <canvas id="recetasTipoUsoBar"></canvas>
+            <h3>Gráfico de torta:</h3>
+            <canvas id="recetasTipoUsoPie"></canvas>
+        </figure>
+    </section>
+
+    <section>
+        <figure>
+            <h2>Cantidades de recetas por tipos de alimentos</h2>
+            <h3>Gráfico de barras:</h3>
+            <canvas id="recetasTipoAlimentosBar"></canvas>
+            <h3>Gráfico de torta:</h3>
+            <canvas id="recetasTipoAlimentosPie"></canvas>
+        </figure>
+    </section>
+    <section>
+        <figure>
+            <h2>Promedio de gastos por mes en el último año:</h2>
+            <h3>Gráfico de barras agrupado por mes:</h3>
+            <canvas id="beneficioPorMes"></canvas>
+        </figure>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Javascript/request.js"></script>
+    <script src="Javascript/reportes.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Alimentos</title>
+    <link rel="icon" href="Resources/alimentosICO.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar de filtros -->
+            <div class="col-md-3 col-lg-2 bg-light p-4 d-flex flex-column justify-content" style="min-height: 100vh;">
+                <div class="d-flex justify-content-center mb-4">
+                    <a class="btn text-center" href="index.html"
+                        style="background-color: #ff4500; color: #ffffff;">Volver al inicio</a>
+                </div>
+                <h4 class="text-center mb-4 ">ALIMENTOS</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3">
+                        <button class="btn btn-primary w-100 mb-2" id="btnAgregarAlimento">Agregar Alimento</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de la tabla de alimentos -->
+            <div class="col-md-9 col-lg-10 p-4">
+                <!-- Botón para desplegar el formulario de agregar alimento -->
+                <div id="formularioAlimento" style="display: none;">
+                    <h4 class="text-center">Agregar/Modificar Alimento</h4>
+                    <form id="formAgregarAlimento">
+                        <div class="mb-3">
+                            <label for="nombreAlimento" class="form-label">Nombre del alimento</label>
+                            <input type="text" class="form-control" id="nombreAlimento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoAlimento" class="form-label">Tipo de alimento</label>
+                            <select class="form-select" id="tipoAlimento">
+                                <option value="0">Seleccione un tipo</option>
+                                <option value="1">Verdura</option>
+                                <option value="2">Lacteo</option>
+                                <option value="3">Queso</option>
+                                <option value="4">Legumbre</option>
+                                <option value="5">Carne</option>
+                                <option value="6">Fruta</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="momentoAlimento" class="form-label">Momento</label>
+                            <div id="momentoAlimento">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="momentoDesayuno">
+                                    <label class="form-check-label" for="momentoDesayuno">
+                                        Desayuno
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="2" id="momentoAlmuerzo">
+                                    <label class="form-check-label" for="momentoAlmuerzo">
+                                        Almuerzo
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="3" id="momentoMerienda">
+                                    <label class="form-check-label" for="momentoMerienda">
+                                        Merienda
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="4" id="momentoCena">
+                                    <label class="form-check-label" for="momentoCena">
+                                        Cena
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioAlimento" class="form-label">Precio</label>
+                            <input type="number" class="form-control" id="precioAlimento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stockAlimento" class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="stockAlimento">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cMinimaAlimento" class="form-label">Cantidad Mínima</label>
+                            <input type="number" class="form-control" id="cMinimaAlimento">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Tabla de alimentos -->
+                <h4 class="text-center">Lista de Alimentos</h4>
+                <table class="table table-striped table-hover mt-4">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Momento</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Cantidad Mínima</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="alimentos-table-body">
+                        <!-- Aquí se insertarán las filas de alimentos -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Script para manejar la lógica de alimentos -->
+    <script src="Javascript/request.js"></script>
+    <script src="Javascript/alimentos.js"></script>
+</body>
+
+</html>
