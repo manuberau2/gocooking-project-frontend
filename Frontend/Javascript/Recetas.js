@@ -1,18 +1,18 @@
 // Url's
-const urlRecetas = "http://localhost:8080/recetas/";
-const urlIngredientes = "http://localhost:8080/alimentos/";
+const urlRecetas = "https://gocooking-project-backend.onrender.com/recetas";
+const urlIngredientes = "https://gocooking-project-backend.onrender.com/alimentos";
 
 
 // Eventos
 
 // Evento para cuando se carga el DOM
-document.addEventListener("DOMContentLoaded", function(eventDOM) {
+document.addEventListener("DOMContentLoaded", function (eventDOM) {
     if (isUserLogged()) {
         obtenerRecetas();
     }
 })
 // Evento para mostrar las recetas
-document.getElementById('btnMostrarRecetas').addEventListener('click', function(event) {
+document.getElementById('btnMostrarRecetas').addEventListener('click', function (event) {
     event.preventDefault();
     document.getElementById('filtroNombre').value = '';
     document.getElementById('filtroMomento').value = 0;
@@ -21,7 +21,7 @@ document.getElementById('btnMostrarRecetas').addEventListener('click', function(
 });
 
 //Eventos para obtener las recetas filtradas
-document.getElementById('btnBuscarFiltro').addEventListener('click', function(event) {
+document.getElementById('btnBuscarFiltro').addEventListener('click', function (event) {
     event.preventDefault();
     const nombre = document.getElementById('filtroNombre').value;
     const momento = document.getElementById('filtroMomento').value;
@@ -35,7 +35,7 @@ document.getElementById('btnBuscarFiltro').addEventListener('click', function(ev
 
 // Eventos para los botones de eliminación
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     if (event.target && event.target.classList.contains('Eliminar')) {
         var idRecetaEliminar = event.target.closest('tr').value;
         if (confirm('¿Está seguro que desea eliminar la receta?')) {
@@ -49,7 +49,7 @@ document.addEventListener('click', function(event) {
 
 
 // Eventos para los botones de edición
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     // Verificamos si el clic se hizo en un botón con la clase 'Editar'
     if (event.target && event.target.classList.contains('Editar')) {
         var formEditar = document.getElementById('formularioEditarReceta');
@@ -72,7 +72,7 @@ document.addEventListener('click', function(event) {
     }
 });
 let ingredientesAgregadosEditar = [];
-document.getElementById('agregarIngredienteEditar').addEventListener('click', function(event) {
+document.getElementById('agregarIngredienteEditar').addEventListener('click', function (event) {
     event.preventDefault();
     const ingredienteSelect = document.getElementById('ingredienteIdEditar');
     const ingredienteId = ingredienteSelect.value;
@@ -88,7 +88,7 @@ document.getElementById('agregarIngredienteEditar').addEventListener('click', fu
         ingredientesAgregadosEditar.push(ingrediente);
 
         mostrarIngredientesEditar();
-        
+
         ingredienteSelect.value = '';
         document.getElementById('cantidadIngredienteEditar').value = '';
     } else {
@@ -96,7 +96,7 @@ document.getElementById('agregarIngredienteEditar').addEventListener('click', fu
     }
 });
 let idRecetaActualizar = 0;
-document.getElementById('formEditarReceta').addEventListener('submit', function(event) {
+document.getElementById('formEditarReceta').addEventListener('submit', function (event) {
     event.preventDefault();
     const nombreReceta = document.getElementById('nombreRecetaEditar').value;
     const momentoReceta = parseInt(document.getElementById('momentoRecetaEditar').value);
@@ -114,11 +114,11 @@ document.getElementById('formEditarReceta').addEventListener('submit', function(
     };
     console.log("Receta a actualizar: ", receta);
     actualizarReceta(receta);
-    
+
 });
 
 // Evento para desplegar el formulario de carga de receta
-document.getElementById('btnAgregarReceta').addEventListener('click', function() {
+document.getElementById('btnAgregarReceta').addEventListener('click', function () {
     var formAgregar = document.getElementById('formularioReceta');
     var formEditar = document.getElementById('formularioEditarReceta');
 
@@ -137,7 +137,7 @@ document.getElementById('btnAgregarReceta').addEventListener('click', function()
 
 // Evento para el botón de agregar ingrediente 
 let ingredientesAgregados = [];
-document.getElementById('agregarIngrediente').addEventListener('click', function(event) {
+document.getElementById('agregarIngrediente').addEventListener('click', function (event) {
     event.preventDefault();
     const ingredienteSelect = document.getElementById('ingredienteId1');
     const ingredienteId = ingredienteSelect.value;
@@ -156,7 +156,7 @@ document.getElementById('agregarIngrediente').addEventListener('click', function
 
         // Actualizar la lista de ingredientes mostrados
         mostrarIngredientes();
-        
+
         // Limpiar los campos después de agregar
         ingredienteSelect.value = '';
         document.getElementById('cantidadIngrediente1').value = '';
@@ -166,9 +166,9 @@ document.getElementById('agregarIngrediente').addEventListener('click', function
 });
 
 // Evento para el boton de agregar receta
-document.getElementById('formAgregarReceta').addEventListener('submit', function(event) {
+document.getElementById('formAgregarReceta').addEventListener('submit', function (event) {
     event.preventDefault();
-    
+
     // Obtener los valores correctamente de los campos de texto y select
     const nombreReceta = document.getElementById('nombreReceta').value;  // Asegurarse de obtener el valor del input
     const momentoReceta = parseInt(document.getElementById('momentoReceta').value);  // Asegurarse de obtener el valor del select
@@ -185,7 +185,7 @@ document.getElementById('formAgregarReceta').addEventListener('submit', function
         momento_consumo: momentoReceta,  // Usar el valor correcto del select
         ingredientes: ingredientesAgregados  // Array de ingredientes agregados
     };
-    
+
     try {
         agregarReceta(receta);  // Enviar los datos al backend
     } catch (error) {
@@ -194,24 +194,24 @@ document.getElementById('formAgregarReceta').addEventListener('submit', function
 });
 
 // Evento para el select de momento de receta
-document.getElementById('momentoReceta').addEventListener('change', function() {
+document.getElementById('momentoReceta').addEventListener('change', function () {
     obtenerIngredientes();
 });
 
 // Evento para el select de momento de receta al momento de editar
-document.getElementById('momentoRecetaEditar').addEventListener('change', function() {
+document.getElementById('momentoRecetaEditar').addEventListener('change', function () {
     obtenerIngredientesEditar();
-}); 
+});
 
 // Evento para borrar el ultimo ingrediente en el formulario de agregar receta
-document.getElementById('borrarIngrediente').addEventListener('click', function(event) {
+document.getElementById('borrarIngrediente').addEventListener('click', function (event) {
     event.preventDefault();
     ingredientesAgregados.pop();
     mostrarIngredientes();
 });
 
 // Evento para borrar el ultimo ingrediente en el formulario de editar receta
-document.getElementById('borrarIngredienteEditar').addEventListener('click', function(event) {
+document.getElementById('borrarIngredienteEditar').addEventListener('click', function (event) {
     event.preventDefault();
     ingredientesAgregadosEditar.pop();
     mostrarIngredientesEditar();
@@ -259,7 +259,7 @@ function successObtenerRecetas(data) {
 
         // Crear una celda para el momento de consumo (desayuno, almuerzo, etc.)
         const momentoCell = document.createElement("td");
-        momentoCell.textContent = obtenerNombreMomento(receta.momento_consumo); 
+        momentoCell.textContent = obtenerNombreMomento(receta.momento_consumo);
         row.appendChild(momentoCell);
 
         // Crear una celda para los ingredientes
@@ -278,11 +278,11 @@ function successObtenerRecetas(data) {
         const btnEditar = document.createElement("button");
         btnEditar.className = "btn btn-sm btn-primary Editar";
         btnEditar.textContent = "Editar";
-        
+
         const btnEliminar = document.createElement("button");
         btnEliminar.className = "btn btn-sm btn-danger Eliminar";
         btnEliminar.textContent = "Eliminar";
-        
+
         // Agregar los botones a la celda de acciones
         accionesCell.appendChild(btnEditar);
         accionesCell.appendChild(btnEliminar);
@@ -318,7 +318,7 @@ function successObtenerIngredientes(data) {
 
     const selectIngrediente = document.getElementById('ingredienteId1');
     selectIngrediente.innerHTML = '<option value="">Seleccione un ingrediente</option>'; // Limpiar el select
-    
+
     // Filtramos los ingredientes que contienen el momento seleccionado en su array de momentos
     data.forEach(alimento => {
         if (alimento.momentos_de_consumo.includes(momentoSeleccionado)) { // Verificamos si el array contiene el momento seleccionado
@@ -335,7 +335,7 @@ function successObtenerIngredientesEditar(data) {
 
     const selectIngrediente = document.getElementById('ingredienteIdEditar');
     selectIngrediente.innerHTML = '<option value="">Seleccione un ingrediente</option>'; // Limpiar el select
-    
+
     // Filtramos los ingredientes que contienen el momento seleccionado en su array de momentos
     data.forEach(alimento => {
         if (alimento.momentos_de_consumo.includes(momentoSeleccionado)) { // Verificamos si el array contiene el momento seleccionado
@@ -380,7 +380,7 @@ function successObtenerReceta(data) {
     idRecetaActualizar = data.id;
     ingredientesAgregadosEditar = [];
     const listaIngredientes = document.getElementById('listaIngredientesEditar');
-    listaIngredientes.innerHTML = ''; 
+    listaIngredientes.innerHTML = '';
     let contador = 1;
     console.log("ingredientes antes de ser añadidos:" + ingredientesAgregadosEditar);
     data.ingredientes.forEach(ingrediente => {
@@ -389,7 +389,7 @@ function successObtenerReceta(data) {
         li.textContent = `${contador}) ${ingrediente.nombre}: ${ingrediente.cantidad} gramos`;
         listaIngredientes.appendChild(li);
         contador++;
-        
+
     });
     console.log("ingredientes después de ser añadidos:" + ingredientesAgregadosEditar);
 }
@@ -413,7 +413,7 @@ function successActualizarReceta(data) {
 // Función para eliminar una receta
 async function eliminarReceta(id) {
     try {
-        await makeRequest(`${urlRecetas}${id}`, Method.DELETE, null, ContentType.JSON, CallType.PRIVATE, successEliminarReceta, errorFunction); 
+        await makeRequest(`${urlRecetas}${id}`, Method.DELETE, null, ContentType.JSON, CallType.PRIVATE, successEliminarReceta, errorFunction);
     } catch (error) {
         console.error("Error [eliminarReceta]: ", error?.message || error);
     }
@@ -421,7 +421,7 @@ async function eliminarReceta(id) {
 function successEliminarReceta(data) {
     alert('Receta eliminada exitosamente!');
     obtenerRecetas();
-    
+
 }
 
 // Función para obtener recetas filtradas

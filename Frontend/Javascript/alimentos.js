@@ -1,5 +1,7 @@
+const urlAlimentos = 'https://gocooking-project-backend.onrender.com/alimentos';
+
 // Eventos del DOM
-document.addEventListener("DOMContentLoaded", function(eventDOM) {
+document.addEventListener("DOMContentLoaded", function (eventDOM) {
     if (isUserLogged()) {
         obtenerAlimentos();
     }
@@ -22,12 +24,12 @@ function ocultarFormulario() {
     document.getElementById('formularioAlimento').style.display = 'none';
 }
 
-document.getElementById('btnAgregarAlimento').addEventListener('click', function() {
+document.getElementById('btnAgregarAlimento').addEventListener('click', function () {
     limpiarFormulario();
     mostrarFormulario();
 });
 
-document.getElementById('formAgregarAlimento').addEventListener('submit', async function(event) {
+document.getElementById('formAgregarAlimento').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const nombre = document.getElementById('nombreAlimento').value;
@@ -40,7 +42,7 @@ document.getElementById('formAgregarAlimento').addEventListener('submit', async 
     if (!nombre || !tipo || !precio || !stock || !cantidadMinima) {
         alert('Por favor, complete todos los campos');
         return;
-    } 
+    }
     if (momentos.length === 0) {
         alert('Por favor, seleccione al menos un momento de consumo');
         return;
@@ -66,7 +68,7 @@ document.getElementById('formAgregarAlimento').addEventListener('submit', async 
 async function cargarAlimento(id) {
     try {
         await makeRequest(
-            `http://localhost:8080/alimentos/${id}`, // URL de la API
+            `${urlAlimentos}/${id}`, // URL de la API
             Method.GET,                              // Método HTTP
             null,                                    // No se envían datos en un GET
             ContentType.JSON,                        // Tipo de contenido es JSON
@@ -93,7 +95,7 @@ async function cargarAlimento(id) {
 async function obtenerAlimentos() {
     try {
         await makeRequest(
-            'http://localhost:8080/alimentos/', // URL de la API
+            `${urlAlimentos}`, // URL de la API
             Method.GET,                        // Método HTTP
             null,                              // No se envían datos en un GET
             ContentType.JSON,                  // Tipo de contenido es JSON
@@ -123,13 +125,13 @@ async function obtenerAlimentos() {
 
                     // Agregar eventos a los botones de modificar
                     document.querySelectorAll('.btnModificar').forEach(button => {
-                        button.addEventListener('click', function() {
+                        button.addEventListener('click', function () {
                             const id = this.getAttribute('data-id');
                             cargarAlimento(id);
                         });
                     });
                     document.querySelectorAll('.btnEliminar').forEach(button => {
-                        button.addEventListener('click', function() {
+                        button.addEventListener('click', function () {
                             const id = this.getAttribute('data-id');
                             if (confirm('¿Está seguro que desea eliminar este alimento?')) {
                                 eliminarAlimento(id);
@@ -148,7 +150,7 @@ async function obtenerAlimentos() {
 }
 
 async function modificarAlimento(id, alimento) {
-    const url = `http://localhost:8080/alimentos/${id}`;
+    const url = `${urlAlimentos}/${id}`;
     try {
         await makeRequest(
             url,                                  // URL de la API
@@ -169,7 +171,7 @@ async function modificarAlimento(id, alimento) {
 }
 
 async function agregarAlimento(alimento) {
-    const url = 'http://localhost:8080/alimentos/';
+    const url = `${urlCompras}`;
     try {
         await makeRequest(
             url,                                  // URL de la API
@@ -190,10 +192,10 @@ async function agregarAlimento(alimento) {
 }
 
 async function eliminarAlimento(id) {
-    const url = `http://localhost:8080/alimentos/${id}`;
+    const url = `${urlAlimentos}/${id}`;
     try {
         await makeRequest(
-            url, 
+            url,
             Method.DELETE,
             null,
             ContentType.JSON,

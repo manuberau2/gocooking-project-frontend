@@ -1,16 +1,16 @@
-const urlCompras = 'http://localhost:8080/compras/';
+const urlCompras = 'https://gocooking-project-backend.onrender.com/compras';
 
 // Eventos
 
 // Evento para carga del DOM
-document.addEventListener("DOMContentLoaded", function(eventDOM) {
+document.addEventListener("DOMContentLoaded", function (eventDOM) {
     if (isUserLogged()) {
         obtenerCompras();
     }
 })
 
 // Evento para obtener productos a comprar
-document.getElementById('btnBuscarAlimento').addEventListener('click', function(event) {
+document.getElementById('btnBuscarAlimento').addEventListener('click', function (event) {
     event.preventDefault();
     const nombre = document.getElementById('nombreAlimento').value;
     const tipo = document.getElementById('tipoAlimento').value;
@@ -19,20 +19,20 @@ document.getElementById('btnBuscarAlimento').addEventListener('click', function(
 });
 
 // Eventos para generar una compra
-document.getElementById('btnNewPurchase').addEventListener('click', function(event) {
+document.getElementById('btnNewPurchase').addEventListener('click', function (event) {
     event.preventDefault();
 
     generarCompra();
 });
 const purchaseModal = new bootstrap.Modal(document.getElementById('newPurchaseModal'));
-document.getElementById('btnReturn').addEventListener('click', function(event) {
+document.getElementById('btnReturn').addEventListener('click', function (event) {
     event.preventDefault();
     purchaseModal.hide();
     obtenerCompras(); // Llamar a la función para obtener las compras
 });
 
 // Evento para mostrar el historial
-document.getElementById('btnShowHistorial').addEventListener('click', function(event) {
+document.getElementById('btnShowHistorial').addEventListener('click', function (event) {
     event.preventDefault();
     obtenerCompras();
     document.getElementById('btnNewPurchase').style.display = "none";
@@ -74,14 +74,14 @@ function successObtenerCompras(data) {
 
         const productosCell = document.createElement("td");
         const productosString = compra.productos
-        .map(producto => `${producto.nombre} (${producto.cantidad} g)`)
-        .join(", ");
+            .map(producto => `${producto.nombre} (${producto.cantidad} g)`)
+            .join(", ");
         productosCell.textContent = productosString;
         row.appendChild(productosCell);
 
         const fechaCell = document.createElement("td");
         const fecha = new Date(compra.fecha_compra);
-        fechaCell.textContent = fecha.toLocaleString(); 
+        fechaCell.textContent = fecha.toLocaleString();
         row.appendChild(fechaCell);
 
         const totalCell = document.createElement("td");
@@ -170,9 +170,9 @@ function successObtenerProductosBajoStock(data) {
 async function generarCompra() {
     try {
         const selectedIds = [];
-        const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]:checked'); 
+        const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
         checkboxes.forEach(checkbox => {
-            selectedIds.push(checkbox.value); 
+            selectedIds.push(checkbox.value);
         });
         const requestBody = {
             ids_compras_seleccionadas: selectedIds
@@ -185,7 +185,7 @@ async function generarCompra() {
 }
 function successGenerarCompra(data) {
     const purchaseDetails = document.getElementById('purchaseDetails');
-    
+
     // Limpiamos el contenido actual de purchaseDetails
     purchaseDetails.innerHTML = '';
 

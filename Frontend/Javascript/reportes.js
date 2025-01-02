@@ -1,4 +1,4 @@
-const urlReportes = 'http://localhost:8080/reportes/';
+const urlReportes = 'https://gocooking-project-backend.onrender.com/reportes';
 
 function errorFunction(status, response) {
     alert("Error " + status + ":\n" + response.error);
@@ -130,7 +130,7 @@ function loadRecetasTipoAlimentosPie() {
                     labels: chartData.labels,
                     datasets: [{
                         data: chartData.data,
-                        
+
                         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FFA500', '#800080']
                     }]
                 },
